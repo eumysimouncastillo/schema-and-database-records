@@ -1,0 +1,117 @@
+CREATE TABLE Customer (
+ CustomerID INT,
+ Name VARCHAR,
+ Email VARCHAR,
+ Phone VARCHAR,
+ Address VARCHAR
+);
+CREATE TABLE Smartphone (
+ SmartphoneID INT,
+ Brand VARCHAR,
+ Model VARCHAR,
+ Price DECIMAL,
+ StockQuantity INT
+);
+CREATE TABLE Orders (
+ OrderID INT,
+ OrderDate DATE,
+ CustomerID INT,
+ TotalAmount DECIMAL
+);
+CREATE TABLE OrderItem (
+ OrderItemID INT,
+ OrderID INT,
+ SmartphoneID INT,
+ Quantity INT,
+ TotalPrice DECIMAL
+);
+CREATE TABLE Payment (
+ PaymentID INT,
+ OrderID INT,
+ PaymentDate DATE,
+ Amount DECIMAL,
+ PaymentMethod VARCHAR
+);
+CREATE TABLE Warranty (
+ WarrantyID INT,
+ SmartphoneID INT,
+ CustomerID INT,
+ StartDate DATE,
+ EndDate DATE,
+ Details TEXT
+);
+
+-- Insert records into Customer table
+INSERT INTO Customer (CustomerID, Name, Email, Phone, Address) VALUES
+(1, 'John Doe', 'john.doe@example.com', '123-456-7890', '123 Elm Street'),
+(2, 'Jane Smith', 'jane.smith@example.com', '987-654-3210', '456 Oak Avenue'),
+(3, 'Alice Johnson', 'alice.j@example.com', '555-123-4567', '789 Maple Road'),
+(4, 'Michael Brown', 'michael.brown@example.com', '333-444-5555', '101 Pine Street'),
+(5, 'Emily Davis', 'emily.davis@example.com', '666-777-8888', '202 Birch Boulevard'),
+(6, 'David Wilson', 'david.wilson@example.com', '999-888-7777', '303 Cedar Lane'),
+(7, 'Sophia Taylor', 'sophia.taylor@example.com', '444-555-6666', '404 Walnut Drive'),
+(8, 'James Anderson', 'james.anderson@example.com', '222-333-4444', '505 Chestnut Way'),
+(9, 'Olivia Thomas', 'olivia.thomas@example.com', '555-666-7777', '606 Spruce Avenue'),
+(10, 'William Martinez', 'william.martinez@example.com', '777-888-9999', '707 Fir Road');
+-- Insert records into Smartphone table
+INSERT INTO Smartphone (SmartphoneID, Brand, Model, Price, StockQuantity) VALUES
+(1, 'Apple', 'iPhone 14', 999.99, 50),
+(2, 'Samsung', 'Galaxy S23', 849.99, 30),
+(3, 'Google', 'Pixel 8', 799.99, 25),
+(4, 'OnePlus', 'OnePlus 11', 699.99, 40),
+(5, 'Sony', 'Xperia 10 IV', 499.99, 20),
+(6, 'Nokia', 'Nokia G60', 349.99, 60),
+(7, 'Xiaomi', 'Redmi Note 12', 299.99, 70),
+(8, 'Motorola', 'Moto G62', 379.99, 50),
+(9, 'Oppo', 'Find X5', 899.99, 25),
+(10, 'Huawei', 'P40 Lite', 399.99, 30);
+-- Insert records into Order table
+INSERT INTO Orders (OrderID, OrderDate, CustomerID, TotalAmount) VALUES
+(1, '2024-09-01', 1, 1999.98),
+(2, '2024-09-02', 2, 849.99),
+(3, '2024-09-03', 3, 1599.98),
+(4, '2024-09-04', 4, 1399.98),
+(5, '2024-09-05', 5, 699.99),
+(6, '2024-09-06', 6, 849.99),
+(7, '2024-09-07', 7, 1199.98),
+(8, '2024-09-08', 8, 679.98),
+(9, '2024-09-09', 9, 799.98),
+(10, '2024-09-10', 10, 499.98);
+-- Insert records into OrderItem table
+INSERT INTO OrderItem (OrderItemID, OrderID, SmartphoneID, Quantity, TotalPrice) VALUES
+(1, 1, 1, 2, 1999.98), -- John Doe bought 2 iPhone 14
+(2, 2, 2, 1, 849.99), -- Jane Smith bought 1 Galaxy S23
+(3, 3, 3, 2, 1599.98), -- Alice Johnson bought 2 Pixel 8
+(4, 4, 4, 2, 1399.98), -- Michael Brown bought 2 OnePlus 11
+(5, 5, 5, 1, 499.99), -- Emily Davis bought 1 Xperia 10 IV
+(6, 6, 6, 2, 699.98), -- David Wilson bought 2 Nokia G60
+(7, 7, 7, 4, 1199.96), -- Sophia Taylor bought 4 Redmi Note 12
+(8, 8, 8, 2, 759.98), -- James Anderson bought 2 Moto G62
+(9, 9, 9, 1, 899.99), -- Olivia Thomas bought 1 Find X5
+(10, 10, 10, 1, 399.99); -- William Martinez bought 1 P40 Lite
+-- Insert records into Payment table
+INSERT INTO Payment (PaymentID, OrderID, PaymentDate, Amount, PaymentMethod)
+VALUES
+(1, 1, '2024-09-01', 1999.98, 'Credit Card'),
+(2, 2, '2024-09-02', 849.99, 'Debit Card'),
+(3, 3, '2024-09-03', 1599.98, 'PayPal'),
+(4, 4, '2024-09-04', 1399.98, 'Credit Card'),
+(5, 5, '2024-09-05', 699.99, 'Debit Card'),
+(6, 6, '2024-09-06', 849.99, 'PayPal'),
+(7, 7, '2024-09-07', 1199.98, 'Credit Card'),
+(8, 8, '2024-09-08', 679.98, 'Debit Card'),
+(9, 9, '2024-09-09', 799.98, 'PayPal'),
+(10, 10, '2024-09-10', 499.98, 'Credit Card');
+-- Insert records into Warranty table
+INSERT INTO Warranty (WarrantyID, SmartphoneID, CustomerID, StartDate, EndDate, Details)
+VALUES
+(1, 1, 1, '2024-09-01', '2026-09-01', '2-year warranty for iPhone 14'),
+(2, 2, 2, '2024-09-02', '2025-09-02', '1-year warranty for Galaxy S23'),
+(3, 3, 3, '2024-09-03', '2026-09-03', '2-year warranty for Pixel 8'),
+(4, 4, 4, '2024-09-04', '2026-09-04', '2-year warranty for OnePlus 11'),
+(5, 5, 5, '2024-09-05', '2025-09-05', '1-year warranty for Xperia 10 IV'),
+(6, 6, 6, '2024-09-06', '2026-09-06', '2-year warranty for Nokia G60'),
+(7, 7, 7, '2024-09-07', '2026-09-07', '2-year warranty for Redmi Note 12'),
+(8, 8, 8, '2024-09-08', '2025-09-08', '1-year warranty for Moto G62'),
+(9, 9, 9, '2024-09-09', '2026-09-09', '2-year warranty for Find X5'),
+(10, 10, 10, '2024-09-10', '2025-09-10', '1-year warranty for P40 Lite');
